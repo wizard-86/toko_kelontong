@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Mencatat pembelian barang, memperbarui stok dan harga beli, lalu menyimpan perubahan.
 void menuTransaksiBeli(Database db) {
   print('\n--- TRANSAKSI PEMBELIAN (KULAKAN) ---');
   for (final p in db.products) {

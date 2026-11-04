@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Menampilkan seluruh transaksi pembelian beserta jumlah total biaya kulakan.
 void menuRiwayatBeli(Database db) {
   print('\x1B[2J\x1B[0;0H');
   header('RIWAYAT TRANSAKSI PEMBELIAN (KULAKAN)');

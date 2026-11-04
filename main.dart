@@ -10,6 +10,7 @@ import 'kategori.dart';
 
 final db = Database();
 
+/// Memuat data, menjalankan menu utama, dan mengarahkan pengguna ke fitur yang dipilih.
 void main() {
   db.load();
   while (true) {
@@ -48,6 +49,7 @@ void main() {
   }
 }
 
+/// Menampilkan ringkasan stok barang dan pilihan menu utama aplikasi.
 void tampilDashboard() {
   print('\x1B[2J\x1B[0;0H'); 
   header('SISTEM KASIR & KULAKAN TOKO KELONTONG (DART NATIVE CLI)');

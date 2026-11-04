@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Menampilkan kategori dan menangani penambahan atau penghapusan kategori.
 void menuKategori(Database db) {
   while (true) {
     print('\x1B[2J\x1B[0;0H');

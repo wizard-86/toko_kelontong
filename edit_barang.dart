@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Mengubah data barang yang dipilih; input kosong mempertahankan nilai sebelumnya.
 void editBarang(Database db) {
   print('\n--- EDIT BARANG ---');
   final id = inputInt('ID Barang yang ingin diedit: ');

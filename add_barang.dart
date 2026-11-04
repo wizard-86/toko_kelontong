@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Meminta data barang baru, memvalidasi kategorinya, lalu menyimpan barang ke database.
 void tambahBarang(Database db) {
   print('\n--- TAMBAH BARANG BARU ---');
   for (final c in db.categories) {

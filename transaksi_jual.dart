@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Memproses penjualan setelah memvalidasi barang, jumlah, dan ketersediaan stok.
 void menuTransaksiJual(Database db) {
   print('\n--- TRANSAKSI PENJUALAN (KASIR) ---');
   for (final p in db.products) {

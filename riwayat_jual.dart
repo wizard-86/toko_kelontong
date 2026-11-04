@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Menampilkan transaksi penjualan beserta akumulasi omzet dan laba.
 void menuRiwayatJual(Database db) {
   print('\x1B[2J\x1B[0;0H');
   header('RIWAYAT TRANSAKSI PENJUALAN');

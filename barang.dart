@@ -4,6 +4,7 @@ import 'add_barang.dart';
 import 'edit_barang.dart';
 import 'delete_barang.dart';
 
+/// Menampilkan daftar barang dan menyediakan menu tambah, edit, serta hapus barang.
 void menuBarang(Database db) {
   while (true) {
     print('\x1B[2J\x1B[0;0H');

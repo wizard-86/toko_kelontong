@@ -1,5 +1,6 @@
 import 'koneksi.dart';
 
+/// Menghapus barang setelah memeriksa keberadaan, riwayat transaksi, dan konfirmasi pengguna.
 void hapusBarang(Database db) {
   print('\n--- HAPUS BARANG ---');
   final id = inputInt('ID Barang yang ingin dihapus: ');

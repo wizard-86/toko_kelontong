@@ -8,14 +8,17 @@ class Category {
   String namaKategori;
   String keterangan;
 
+  /// Membuat kategori dengan ID, nama, dan keterangan yang diberikan.
   Category({required this.id, required this.namaKategori, required this.keterangan});
 
+  /// Mengubah kategori menjadi map agar dapat disimpan sebagai JSON.
   Map<String, dynamic> toMap() => {
         'id': id,
         'namaKategori': namaKategori,
         'keterangan': keterangan,
       };
 
+  /// Membuat kategori dari map hasil pembacaan data JSON.
   factory Category.fromMap(Map<String, dynamic> m) => Category(
         id: m['id'],
         namaKategori: m['namaKategori'],
@@ -32,6 +35,7 @@ class Product {
   int hargaJual;
   int stok;
 
+  /// Membuat barang dengan identitas, kategori, harga, dan jumlah stok.
   Product({
     required this.id,
     required this.kodeBarang,
@@ -42,6 +46,7 @@ class Product {
     required this.stok,
   });
 
+  /// Mengubah barang menjadi map agar dapat disimpan sebagai JSON.
   Map<String, dynamic> toMap() => {
         'id': id,
         'kodeBarang': kodeBarang,
@@ -52,6 +57,7 @@ class Product {
         'stok': stok,
       };
 
+  /// Membuat barang dari map hasil pembacaan data JSON.
   factory Product.fromMap(Map<String, dynamic> m) => Product(
         id: m['id'],
         kodeBarang: m['kodeBarang'],
@@ -73,6 +79,7 @@ class Purchase {
   int totalBiaya;
   String suplier;
 
+  /// Membuat catatan pembelian dengan detail faktur, barang, jumlah, biaya, dan pemasok.
   Purchase({
     required this.id,
     required this.noFaktur,
@@ -84,6 +91,7 @@ class Purchase {
     required this.suplier,
   });
 
+  /// Mengubah transaksi pembelian menjadi map agar dapat disimpan sebagai JSON.
   Map<String, dynamic> toMap() => {
         'id': id,
         'noFaktur': noFaktur,
@@ -95,6 +103,7 @@ class Purchase {
         'suplier': suplier,
       };
 
+  /// Membuat transaksi pembelian dari map hasil pembacaan data JSON.
   factory Purchase.fromMap(Map<String, dynamic> m) => Purchase(
         id: m['id'],
         noFaktur: m['noFaktur'],
@@ -117,6 +126,7 @@ class Sale {
   int totalBayar;
   int laba;
 
+  /// Membuat catatan penjualan dengan detail struk, barang, jumlah, pembayaran, dan laba.
   Sale({
     required this.id,
     required this.noStruk,
@@ -128,6 +138,7 @@ class Sale {
     required this.laba,
   });
 
+  /// Mengubah transaksi penjualan menjadi map agar dapat disimpan sebagai JSON.
   Map<String, dynamic> toMap() => {
         'id': id,
         'noStruk': noStruk,
@@ -139,6 +150,7 @@ class Sale {
         'laba': laba,
       };
 
+  /// Membuat transaksi penjualan dari map hasil pembacaan data JSON.
   factory Sale.fromMap(Map<String, dynamic> m) => Sale(
         id: m['id'],
         noStruk: m['noStruk'],
@@ -161,6 +173,7 @@ class Database {
   List<Purchase> purchases = [];
   List<Sale> sales = [];
 
+  /// Memuat data dari file JSON atau membuat dan menyimpan data awal jika file belum ada.
   void load() {
     final file = File(filePath);
     if (!file.existsSync()) {
@@ -175,6 +188,7 @@ class Database {
     sales = (data['sales'] as List).map((e) => Sale.fromMap(e)).toList();
   }
 
+  /// Menyimpan seluruh kategori, barang, pembelian, dan penjualan ke file JSON.
   void save() {
     final data = {
       'categories': categories.map((e) => e.toMap()).toList(),
@@ -185,6 +199,7 @@ class Database {
     File(filePath).writeAsStringSync(const JsonEncoder.withIndent('  ').convert(data));
   }
 
+  /// Mengisi database dengan kategori dan barang contoh sebagai data awal.
   void _seed() {
     categories = [
       Category(id: 1, namaKategori: 'Sembako', keterangan: 'Kebutuhan pokok beras, minyak, gula'),
@@ -202,13 +217,22 @@ class Database {
     ];
   }
 
+  /// Menghasilkan ID kategori berikutnya, atau 1 jika belum ada kategori.
   int nextCategoryId() => categories.isEmpty ? 1 : categories.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
+
+  /// Menghasilkan ID barang berikutnya, atau 1 jika belum ada barang.
   int nextProductId() => products.isEmpty ? 1 : products.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
+
+  /// Menghasilkan ID pembelian berikutnya, atau 1 jika belum ada transaksi pembelian.
   int nextPurchaseId() => purchases.isEmpty ? 1 : purchases.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
+
+  /// Menghasilkan ID penjualan berikutnya, atau 1 jika belum ada transaksi penjualan.
   int nextSaleId() => sales.isEmpty ? 1 : sales.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
 
+  /// Mengambil nama kategori berdasarkan ID; mengembalikan tanda '-' jika tidak ditemukan.
   String namaKategori(int id) => categories.firstWhere((c) => c.id == id, orElse: () => Category(id: 0, namaKategori: '-', keterangan: '')).namaKategori;
 
+  /// Mencari barang berdasarkan ID dan mengembalikan null jika tidak ditemukan.
   Product? findProduct(int id) {
     try {
       return products.firstWhere((p) => p.id == id);
@@ -217,6 +241,7 @@ class Database {
     }
   }
 
+  /// Membuat nomor faktur pembelian berdasarkan bulan berjalan dan urutan transaksi.
   String generateNoFaktur() {
     final now = DateTime.now();
     final ym = '${now.year}${now.month.toString().padLeft(2, '0')}';
@@ -224,6 +249,7 @@ class Database {
     return 'PB-$ym-$seq';
   }
 
+  /// Membuat nomor struk penjualan berdasarkan bulan berjalan dan urutan transaksi.
   String generateNoStruk() {
     final now = DateTime.now();
     final ym = '${now.year}${now.month.toString().padLeft(2, '0')}';
@@ -234,6 +260,7 @@ class Database {
 
 // ==================== HELPER CLI ====================
 
+/// Memformat bilangan sebagai mata uang rupiah dengan pemisah ribuan berupa titik.
 String formatRupiah(int n) {
   final s = n.toString();
   final buf = StringBuffer();
@@ -244,20 +271,25 @@ String formatRupiah(int n) {
   return 'Rp $buf';
 }
 
+/// Menghasilkan tanggal dan waktu saat ini dalam format YYYY-MM-DD HH:mm.
 String nowString() {
   final n = DateTime.now();
+  /// Mengubah angka tanggal atau waktu menjadi dua digit dengan nol di depan.
   String two(int v) => v.toString().padLeft(2, '0');
   return '${n.year}-${two(n.month)}-${two(n.day)} ${two(n.hour)}:${two(n.minute)}';
 }
 
+/// Mencetak garis pemisah dengan karakter dan panjang yang ditentukan.
 void garis({String char = '=', int length = 88}) => print(char * length);
 
+/// Mencetak judul yang dipusatkan di antara dua garis pemisah.
 void header(String title) {
   garis();
   print(title.padLeft((88 + title.length) ~/ 2).padRight(88));
   garis();
 }
 
+/// Meminta input bilangan bulat dan mengulang permintaan jika input tidak valid.
 int inputInt(String prompt) {
   while (true) {
     stdout.write(prompt);
@@ -268,6 +300,7 @@ int inputInt(String prompt) {
   }
 }
 
+/// Meminta input teks dan, kecuali diizinkan, menolak input yang kosong.
 String inputString(String prompt, {bool allowEmpty = false}) {
   while (true) {
     stdout.write(prompt);
