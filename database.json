@@ -1,6 +1,82 @@
 {
-  "categories": [],
-  "products": [],
+  "categories": [
+    {
+      "id": 1,
+      "namaKategori": "Sembako",
+      "keterangan": "Kebutuhan pokok beras, minyak, gula"
+    },
+    {
+      "id": 2,
+      "namaKategori": "Minuman",
+      "keterangan": "Kopi, teh, susu, dan air mineral"
+    },
+    {
+      "id": 3,
+      "namaKategori": "Makanan Ringan",
+      "keterangan": "Biskuit, keripik, dan mie instan"
+    },
+    {
+      "id": 4,
+      "namaKategori": "Kebersihan",
+      "keterangan": "Sabun mandi, pasta gigi, deterjen"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "kodeBarang": "BRG001",
+      "namaBarang": "Beras Ramos 5kg",
+      "kategoriId": 1,
+      "hargaBeli": 65000,
+      "hargaJual": 72000,
+      "stok": 15
+    },
+    {
+      "id": 2,
+      "kodeBarang": "BRG002",
+      "namaBarang": "Minyak Goreng Sawit 1L",
+      "kategoriId": 1,
+      "hargaBeli": 14000,
+      "hargaJual": 16500,
+      "stok": 20
+    },
+    {
+      "id": 3,
+      "kodeBarang": "BRG003",
+      "namaBarang": "Gula Pasir Kristal 1kg",
+      "kategoriId": 1,
+      "hargaBeli": 15000,
+      "hargaJual": 17500,
+      "stok": 25
+    },
+    {
+      "id": 4,
+      "kodeBarang": "BRG004",
+      "namaBarang": "Kopi Kapal Api 165g",
+      "kategoriId": 2,
+      "hargaBeli": 12000,
+      "hargaJual": 14000,
+      "stok": 30
+    },
+    {
+      "id": 5,
+      "kodeBarang": "BRG005",
+      "namaBarang": "Indomie Goreng Original",
+      "kategoriId": 3,
+      "hargaBeli": 2800,
+      "hargaJual": 3500,
+      "stok": 80
+    },
+    {
+      "id": 6,
+      "kodeBarang": "BRG006",
+      "namaBarang": "Sabun Mandi Lifebuoy",
+      "kategoriId": 4,
+      "hargaBeli": 3500,
+      "hargaJual": 4500,
+      "stok": 40
+    }
+  ],
   "purchases": [],
   "sales": []
 }
