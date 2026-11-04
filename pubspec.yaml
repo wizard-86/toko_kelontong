@@ -1,0 +1,5 @@
+name: uts_dart_toko_kelontong
+description: Sistem Informasi Manajemen Toko Kelontong - UTS Mobile Multimedia Solution
+version: 1.0.0
+environment:
+  sdk: '>=3.0.0 <4.0.0'

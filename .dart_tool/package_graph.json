@@ -1,0 +1,14 @@
+{
+  "roots": [
+    "uts_dart_toko_kelontong"
+  ],
+  "packages": [
+    {
+      "name": "uts_dart_toko_kelontong",
+      "version": "1.0.0",
+      "dependencies": [],
+      "devDependencies": []
+    }
+  ],
+  "configVersion": 1
+}
