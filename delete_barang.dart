@@ -1,6 +1,8 @@
+// Database dan helper input/output yang digunakan fungsi ini didefinisikan di koneksi.dart.
 import 'koneksi.dart';
 
 /// Menghapus barang setelah memeriksa keberadaan, riwayat transaksi, dan konfirmasi pengguna.
+/// Mengakses [Database] dan helper CLI yang diimpor dari koneksi.dart.
 void hapusBarang(Database db) {
   print('\n--- HAPUS BARANG ---');
   final id = inputInt('ID Barang yang ingin dihapus: ');

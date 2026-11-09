@@ -1,16 +1,26 @@
+// dart:io menyediakan stdin untuk input CLI dan exit untuk menutup aplikasi.
 import 'dart:io';
+// Database, input/output CLI, format angka, serta model transaksi berasal dari koneksi.dart.
 import 'koneksi.dart';
+// Menu pengelolaan barang berasal dari barang.dart.
 import 'barang.dart';
+// Menu transaksi penjualan berasal dari transaksi_jual.dart.
 import 'transaksi_jual.dart';
+// Menu transaksi pembelian berasal dari transaksi_beli.dart.
 import 'transaksi_beli.dart';
+// Menu riwayat penjualan berasal dari riwayat_jual.dart.
 import 'riwayat_jual.dart';
+// Menu riwayat pembelian berasal dari riwayat_beli.dart.
 import 'riwayat_beli.dart';
+// Menu laporan keuangan berasal dari laporan_keuangan.dart.
 import 'laporan_keuangan.dart';
+// Menu manajemen kategori berasal dari kategori.dart.
 import 'kategori.dart';
 
 final db = Database();
 
-/// Memuat data, menjalankan menu utama, dan mengarahkan pengguna ke fitur yang dipilih.
+/// Memuat data melalui [Database] dari koneksi.dart, lalu menjalankan menu dan memanggil
+/// fungsi-fungsi fitur yang diimpor dari berkas menu masing-masing.
 void main() {
   db.load();
   while (true) {
@@ -50,6 +60,7 @@ void main() {
 }
 
 /// Menampilkan ringkasan stok barang dan pilihan menu utama aplikasi.
+/// Menggunakan [header], [garis], dan [formatRupiah] dari koneksi.dart.
 void tampilDashboard() {
   print('\x1B[2J\x1B[0;0H'); 
   header('SISTEM KASIR & KULAKAN TOKO KELONTONG (DART NATIVE CLI)');

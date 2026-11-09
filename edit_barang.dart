@@ -1,6 +1,8 @@
+// Database dan helper input/output yang digunakan fungsi ini didefinisikan di koneksi.dart.
 import 'koneksi.dart';
 
 /// Mengubah data barang yang dipilih; input kosong mempertahankan nilai sebelumnya.
+/// Mengakses [Database] dan helper CLI yang diimpor dari koneksi.dart.
 void editBarang(Database db) {
   print('\n--- EDIT BARANG ---');
   final id = inputInt('ID Barang yang ingin diedit: ');

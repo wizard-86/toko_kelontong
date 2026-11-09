@@ -1,6 +1,8 @@
+// Database, model Sale, dan helper transaksi/input/output berasal dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Memproses penjualan setelah memvalidasi barang, jumlah, dan ketersediaan stok.
+/// Membuat model [Sale] dan memakai [Database] serta helper dari koneksi.dart.
 void menuTransaksiJual(Database db) {
   print('\n--- TRANSAKSI PENJUALAN (KASIR) ---');
   for (final p in db.products) {

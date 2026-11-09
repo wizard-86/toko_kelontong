@@ -1,6 +1,8 @@
+// Database, model Category, dan helper input/output berasal dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Menampilkan kategori dan menangani penambahan atau penghapusan kategori.
+/// Menggunakan [Database] serta model [Category] yang diimpor dari koneksi.dart.
 void menuKategori(Database db) {
   while (true) {
     print('\x1B[2J\x1B[0;0H');

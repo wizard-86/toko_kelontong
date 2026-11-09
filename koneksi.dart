@@ -1,8 +1,11 @@
+// dart:convert menyediakan jsonDecode dan JsonEncoder untuk membaca/menulis JSON.
 import 'dart:convert';
+// dart:io menyediakan File untuk penyimpanan serta stdin/stdout untuk input/output CLI.
 import 'dart:io';
 
 // ==================== MODEL ENTITAS ====================
 
+/// Model kategori barang yang disimpan di database dan ditampilkan pada menu kategori.
 class Category {
   int id;
   String namaKategori;
@@ -26,6 +29,7 @@ class Category {
       );
 }
 
+/// Model barang yang menyimpan identitas, kategori, harga beli/jual, dan stok.
 class Product {
   int id;
   String kodeBarang;
@@ -69,6 +73,7 @@ class Product {
       );
 }
 
+/// Model transaksi pembelian atau kulakan beserta faktur, biaya, dan pemasok.
 class Purchase {
   int id;
   String noFaktur;
@@ -116,6 +121,7 @@ class Purchase {
       );
 }
 
+/// Model transaksi penjualan beserta struk, nilai pembayaran, dan laba.
 class Sale {
   int id;
   String noStruk;
@@ -165,6 +171,8 @@ class Sale {
 
 // ==================== SERVICE DATABASE (DAO) ====================
 
+/// Mengelola data toko di memori serta memuat dan menyimpan data ke database.json.
+/// Class ini juga menyediakan pencarian, pembuatan ID, dan nomor transaksi untuk menu.
 class Database {
   static const String filePath = 'database.json';
 
@@ -200,6 +208,7 @@ class Database {
   }
 
   /// Mengisi database dengan kategori dan barang contoh sebagai data awal.
+  /// Dipanggil oleh [load] ketika file database belum tersedia.
   void _seed() {
     categories = [
       Category(id: 1, namaKategori: 'Sembako', keterangan: 'Kebutuhan pokok beras, minyak, gula'),
@@ -272,9 +281,10 @@ String formatRupiah(int n) {
 }
 
 /// Menghasilkan tanggal dan waktu saat ini dalam format YYYY-MM-DD HH:mm.
+/// Menggunakan [DateTime] dari pustaka inti Dart.
 String nowString() {
   final n = DateTime.now();
-  /// Mengubah angka tanggal atau waktu menjadi dua digit dengan nol di depan.
+  // Helper lokal untuk menambahkan nol di depan angka tanggal/waktu satu digit.
   String two(int v) => v.toString().padLeft(2, '0');
   return '${n.year}-${two(n.month)}-${two(n.day)} ${two(n.hour)}:${two(n.minute)}';
 }

@@ -1,6 +1,8 @@
+// Database dan helper pemformatan/tampilan berasal dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Menampilkan seluruh transaksi pembelian beserta jumlah total biaya kulakan.
+/// Mengakses data [Database] dan helper tampilan yang diimpor dari koneksi.dart.
 void menuRiwayatBeli(Database db) {
   print('\x1B[2J\x1B[0;0H');
   header('RIWAYAT TRANSAKSI PEMBELIAN (KULAKAN)');

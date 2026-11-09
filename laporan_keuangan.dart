@@ -1,6 +1,8 @@
+// Database dan helper format rupiah/tampilan berasal dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Menghitung dan menampilkan ringkasan keuangan serta stok/aset untuk setiap kategori.
+/// Mengakses [Database] dan [formatRupiah] yang diimpor dari koneksi.dart.
 void menuLaporanKeuangan(Database db) {
   print('\x1B[2J\x1B[0;0H');
   header('LAPORAN RINGKASAN KEUANGAN TOKO');

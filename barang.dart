@@ -1,10 +1,16 @@
+// dart:io adalah pustaka bawaan Dart untuk operasi sistem.
 import 'dart:io';
+// Database dan helper tampilan/input berasal dari koneksi.dart.
 import 'koneksi.dart';
+// Fungsi tambahBarang didefinisikan di add_barang.dart.
 import 'add_barang.dart';
+// Fungsi editBarang didefinisikan di edit_barang.dart.
 import 'edit_barang.dart';
+// Fungsi hapusBarang didefinisikan di delete_barang.dart.
 import 'delete_barang.dart';
 
 /// Menampilkan daftar barang dan menyediakan menu tambah, edit, serta hapus barang.
+/// Memanggil fungsi CRUD dari add_barang.dart, edit_barang.dart, dan delete_barang.dart.
 void menuBarang(Database db) {
   while (true) {
     print('\x1B[2J\x1B[0;0H');

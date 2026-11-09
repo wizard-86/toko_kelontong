@@ -1,6 +1,8 @@
+// Database, model Purchase, dan helper transaksi/input/output berasal dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Mencatat pembelian barang, memperbarui stok dan harga beli, lalu menyimpan perubahan.
+/// Membuat model [Purchase] dan memakai [Database] serta helper dari koneksi.dart.
 void menuTransaksiBeli(Database db) {
   print('\n--- TRANSAKSI PEMBELIAN (KULAKAN) ---');
   for (final p in db.products) {

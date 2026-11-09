@@ -1,6 +1,8 @@
+// Database, model Product, serta helper input/output diimpor dari koneksi.dart.
 import 'koneksi.dart';
 
 /// Meminta data barang baru, memvalidasi kategorinya, lalu menyimpan barang ke database.
+/// Memakai [Database], [Product], dan helper CLI yang didefinisikan di koneksi.dart.
 void tambahBarang(Database db) {
   print('\n--- TAMBAH BARANG BARU ---');
   for (final c in db.categories) {
